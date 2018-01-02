@@ -5,7 +5,7 @@
 //
 var Alexa = require('alexa-sdk');
 var APP_ID =  "amzn1.ask.skill.<#>";
-var SKILL_NAME = "My Bulb";
+var SKILL_NAME = "myBulb";
 var LAUNCH_MESSAGE = "Launched!";
 var HELP_MESSAGE = "You can turn on or off the bulb and change its color... What can I help you with?";
 var HELP_REPROMPT = "What can I help you with?";
@@ -27,8 +27,8 @@ var speechOutState = POWER_STATE_MESSAGE;
 var config = {};
 config.IOT_BROKER_ENDPOINT      = "<#>.iot.us-east-1.amazonaws.com";
 config.IOT_BROKER_REGION        = "us-east-1";
-config.IOT_THING_NAME           = "MyBulb";
-config.params                   = { thingName: 'MyBulb' };
+config.IOT_THING_NAME           = "myBulb";
+config.params                   = { thingName: 'myBulb' };
 
 var AWS = require('aws-sdk');
 AWS.config.region = config.IOT_BROKER_REGION;
@@ -104,7 +104,7 @@ exports.handler = function(event, context, callback) {
     }
     else {
         var paramsPublish = {
-            topic : '$aws/things/MyBulb/shadow/update',
+            topic : '$aws/things/myBulb/shadow/update',
             payload : JSON.stringify(bulbPayload[index]),
             qos : 0
         };
